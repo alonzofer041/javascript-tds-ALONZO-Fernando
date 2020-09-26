@@ -1,7 +1,7 @@
 // PARTIE 2
 function diftypes(x){
 
-    console.log(typeof(x));
+    console.log("le type de variable est: "+typeof(x));
 
 
 }
@@ -204,7 +204,7 @@ function aditionnerentiers(){
     for(var i=0;i<tableau.length;i++){
         somme+=tableau[i];
     }
-    console.log(somme);
+    console.log("la somme des elements du tableau est: "+somme);
 }
 aditionnerentiers();
 
@@ -243,7 +243,7 @@ function dichotomie(recherche){
         }
     }
     if (trouve==true){
-        console.log("position "+position);
+        console.log("il se trouve dans la position "+position);
     }
     else{
         console.log("Pas trouvé");
@@ -252,6 +252,7 @@ function dichotomie(recherche){
 dichotomie("Gmail");
 
 function entierpairmajeur(nombreelements){
+    nombreelements=parseInt(nombreelements);
     var tableauentiers=[];
     var nombremajeur=0;
     for(var i=1;i<=nombreelements;i++){
@@ -272,3 +273,4 @@ function entierpairmajeur(nombreelements){
         console.log("Il n'y a pas des pairs majeurs");
     }
 }
+entierpairmajeur(prompt("Combien d'elements?"));
