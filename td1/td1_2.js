@@ -27,21 +27,21 @@ let y2=42.32;
 let y3=43.89;
 function conversiontypes(y1,y2,y3){
     var yconvert1=parseInt(y1);
-    console.log(typeof(yconvert1));
+    console.log("type:"+ typeof(yconvert1));
     var yconvert2=toString(y2);
-    console.log(typeof(yconvert2));
+    console.log("type: "+typeof(yconvert2));
     var yconvert3=parseFloat(y3);
-    console.log(typeof(yconvert3));
+    console.log("type: "+typeof(yconvert3));
 
     yoperation1=Math.floor(y2);
-    console.log(yoperation1);
+    console.log("operation 1: "+yoperation1);
     yoperation2=Math.ceil(y2);
-    console.log(yoperation2);
+    console.log("operation 2: "+yoperation2);
     yoperation3=Math.floor(y3);
-    console.log(yoperation3);
+    console.log("operation 3: "+yoperation3);
 
     yoperationchaine=Math.ceil(y1);
-    console.log(y1);
+    console.log("operation 4: "+y1);
 }
 conversiontypes(y1,y2,y3);
 
@@ -98,7 +98,7 @@ function saisirchaine(){
     do {
         var chaine=prompt("TD 1 3.1: saisissez une chaine ");
         var chainemay=chaine.toUpperCase();
-    } while (chaine!=chainemay);
+    } while (chaine!==chainemay);
     console.log(chaine.toUpperCase());
 }
 saisirchaine();
@@ -147,32 +147,32 @@ function chainecryptee() {
     var chaine="AcrDOfeZ";
     var chaineremplace="";
     for (var i=0;i<chaine.length;i++) {
-        if(chaine[i]=="A"){
+        if(chaine[i]==="A"){
             chaineremplace+="4";
         }
-        else if(chaine[i]=="E"){
+        else if(chaine[i]==="E"){
             chaineremplace+="3";
         }
-        else if(chaine[i]=="G"){
+        else if(chaine[i]==="G"){
             chaineremplace+="6";
         }
-        else if(chaine[i]=="I"){
+        else if(chaine[i]==="I"){
             chaineremplace+="1";
         }
-        else if(chaine[i]=="O"){
+        else if(chaine[i]==="O"){
             chaineremplace+="0";
         }
-        else if(chaine[i]=="S"){
+        else if(chaine[i]==="S"){
             chaineremplace+="5";
         }
-        else if(chaine[i]=="Z"){
+        else if(chaine[i]==="Z"){
             chaineremplace+="2";
         }
         else{
             chaineremplace+=chaine[i];
         }
     }
-    console.log(chaineremplace);
+    console.log("chaine cryptee: "+chaineremplace);
 }
 // chainecryptee(prompt("Ecrivez quelque truc"));
 chainecryptee();
@@ -223,33 +223,55 @@ entierspair();
 function fusionnertableaux(){
     // var tableau1=["A","b",4,23,34.1];
     // var tableau2=["das","F",44.3];
-    var tableau1=["b","F","G","H"];
-    var tableau2=["j","m","z"];
+    var tableau1=["H","fa","re","z"];
+    var tableau2=["j",50,32];
     var tableau3=tableau1.concat(tableau2);
-    var valmax="";
+    for (var i=0;i<tableau3.length;i++){
+        for(var j=0;j<tableau3.length-i;j++){
+            if(tableau3[j]>tableau3[j+1]){
+                [tableau3[j],tableau3[j+1]]=[tableau3[j+1],tableau3[j]];
+            }
+        }
+    }
     console.log(tableau3);
 }
 fusionnertableaux();
 
-function dichotomie(recherche){
-    var tableau=["B","F","Gmail","H","Udemy"];
-    var trouve=false;
-    var position=0;
-    for(var i=0;i<tableau.length;i++){
-        if(recherche==tableau[i]){
-            trouve=true;
-            position=i;
-            break;
+function dichotomie(recherche,maxiterations){
+    var tableau=["B","A","Gmail","3","1"];
+    var valmin=0;
+    var valmax=tableau.length-1;
+    var iterations=0;
+    for (var i=0;i<tableau.length;i++){
+        for(var j=0;j<tableau.length-i;j++){
+            if(tableau[j]>tableau[j+1]){
+                [tableau[j],tableau[j+1]]=[tableau[j+1],tableau[j]];
+            }
         }
     }
-    if (trouve==true){
-        console.log("il se trouve dans la position "+position);
-    }
-    else{
-        console.log("Pas trouvé");
-    }
+    console.log(tableau);
+    do {
+        var indexdemi=Math.floor(Math.abs((valmin+valmax)/2));
+        tableau[indexdemi]=tableau[indexdemi].toString();
+        recherche=recherche.toString();
+        var resultat=tableau[indexdemi].localeCompare(recherche);
+        if(resultat===0) {
+            console.log("objet dans la position: " + indexdemi);
+            break;
+        }
+        else if(resultat===1){
+            valmax=indexdemi-1;
+        }
+        else if(resultat===-1){
+            valmin=indexdemi+1;
+        }
+        if(tableau[indexdemi]!==recherche && iterations===maxiterations){
+            console.log("element pas trouvé");
+        }
+        iterations++;
+    }while (iterations<=maxiterations);
 }
-dichotomie("Gmail");
+dichotomie("Gmail",10);
 
 function entierpairmajeur(nombreelements){
     nombreelements=parseInt(nombreelements);
@@ -266,6 +288,7 @@ function entierpairmajeur(nombreelements){
             }
         }
     }
+    console.log(tableauentiers);
     if(nombremajeur!==0) {
         console.log("Le pair majeur est "+nombremajeur);
     }
@@ -274,3 +297,21 @@ function entierpairmajeur(nombreelements){
     }
 }
 entierpairmajeur(prompt("Combien d'elements?"));
+
+function nombreocurrences(chaine){
+    var tableauchaine=chaine.split(" ");
+    var tableauassoc=new Array();
+    for (i=0;i<tableauchaine.length;i++){
+        var chaineacompt=tableauchaine[i];
+        var compteur=0;
+        for(j=0;j<tableauchaine.length;j++){
+            if(chaineacompt===tableauchaine[j]){
+                compteur++;
+            }
+        }
+        tableauassoc[tableauchaine[i]]=compteur;
+    }
+    console.log(tableauassoc);
+}
+nombreocurrences("Hola me llamo fer y soy llamo para llamo");
+
