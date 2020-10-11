@@ -1,0 +1,17 @@
+.elements * {
+    margin: 3px;
+}
+.elements > input[type="text"]{
+    border-radius: 10px;
+    border-style: solid;
+}
+.elements > input[type="text"]:focus{
+    border-radius: 10px;
+    border:0px;
+}
+.resultats{
+    color: white;
+    font-family: Arial;
+    background-color: #0f6674;
+    width: 50%;
+}
