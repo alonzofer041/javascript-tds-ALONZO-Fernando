@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donnes des régions de France</title>
+</head>
+<body onload="supressionstockage()">
+    <select name="region" id="region" onchange="chargerdepartement()">
+        <option value="">selectionner une region</option>
+    </select>
+
+    <select name="departement" id="departement" onchange="chargercommunes()">
+
+    </select>
+
+    <select name="commune" id="commune" onchange="selectioncommune()">
+
+    </select>
+    <p>population: <span id="population"></span></p>
+    <table id="tabledonneescommune">
+        <tr>
+            <td>Nom</td>
+            <td>Code Postal</td>
+            <td>Population</td>
+        </tr>
+    </table>
+    <p>population totale: <span id="poptotal"></span></p>
+    <button onclick="affichermeteo()">Afficher la météo de la ville</button>
+</body>
+<script src="informationscommunes.js"></script>
+</html>
