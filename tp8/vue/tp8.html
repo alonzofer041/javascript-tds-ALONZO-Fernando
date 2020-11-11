@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portefeuille de divises</title>
+</head>
+<body>
+    <h1>Portefeuille de devises</h1>
+
+    <p id="zone_message"></p>
+
+    <label for="">Type de monnaie:</label>
+    <select name="typemonnaie" id="typemonnaie">
+<!--        <option value="pesos">Pesos</option>-->
+<!--        <option value="euros">Euros</option>-->
+<!--        <option value="dolar">Dolar</option>-->
+    </select>
+    <label for="">Montant:</label>
+    <input type="text" id="montant">
+    <button type="button" id="ajouter">Ajouter montant</button>
+    <button type="button" id="retirer">Rétirer montant</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom de la devise</th>
+                <th>Montant</th>
+                <th>Quantité en euros</th>
+            </tr>
+        </thead>
+        <tbody id="tabledevises"></tbody>
+    </table>
+
+    <script src="../js/devise_portefeuille.js" type="module"></script>
+</body>
+</html>
